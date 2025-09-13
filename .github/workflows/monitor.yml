@@ -13,6 +13,18 @@ on:
 jobs:
   monitor:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: ${{ secrets.NODE_ENV }}
+      LOG_LEVEL: ${{ secrets.LOG_LEVEL }}
+      HEADLESS: ${{ secrets.HEADLESS }}
+      MONITOR_URL: ${{ secrets.MONITOR_URL }}
+      TARGET_DATA: ${{ secrets.TARGET_DATA }}
+      MAILER_SERVICE: ${{ secrets.MAILER_SERVICE }}
+      MAILER_USER: ${{ secrets.MAILER_USER }}
+      MAILER_PASS: ${{ secrets.MAILER_PASS }}
+      MAILER_FROM: ${{ secrets.MAILER_FROM }}
+      MAILER_TO: ${{ secrets.MAILER_TO }}
+      MAILER_CC: ${{ secrets.MAILER_CC }}
 
     steps:
       - name: Checkout repo
