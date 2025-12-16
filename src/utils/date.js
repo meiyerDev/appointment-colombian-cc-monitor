@@ -1,9 +1,9 @@
 class DateUtils {
-    static differenceInHours(date1, date2) {
+    static differenceInMinutes(date1, date2) {
         const startDate = new Date(date1);
         const endDate = new Date(date2);
         const diffMs = Math.abs(startDate - endDate);
-        const diffHours = diffMs / (1000 * 60 * 60);
+        const diffHours = diffMs / (1_000 * 60); // to Minutes
         return diffHours;
     }
 

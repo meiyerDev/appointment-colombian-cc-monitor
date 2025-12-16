@@ -193,9 +193,9 @@ class WebMonitor {
 
             staff.availabilityItems.forEach((item) => {
                 if (unavailableStatuses[item.status] === undefined) {
-                    const differenceInHours = DateUtils.differenceInHours(item.startDateTime.dateTime, item.endDateTime.dateTime);
+                    const differenceInMinutes = DateUtils.differenceInMinutes(item.startDateTime.dateTime, item.endDateTime.dateTime);
                     // Segun observaciones, solo considerar slots de 20 minutos o más
-                    if (differenceInHours >= 20) {
+                    if (differenceInMinutes >= 20) {
                         hasAvailability = true;
 
                         availableSlots.push({
