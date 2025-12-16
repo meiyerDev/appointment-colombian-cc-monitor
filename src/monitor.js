@@ -109,10 +109,10 @@ class WebMonitor {
             const apiResponsePromise = page.waitForResponse(
                 response => response.url().includes('Atencinalpblico@cancilleria.gov.co/GetStaffAvailability') &&
                     response.status() === 200,
-                { timeout: 5000 }
+                { timeout: 6000 }
             );
 
-            await page.locator('input[aria-label="Registro Civil de Nacimiento"] + label').click();
+            await page.locator('input[aria-label="Cédula Primera vez (digital)"] + label').click();
             await this.browserManager.takeScreenshot("003_birth_certificate_service_click");
 
             this.logger.info('Esperando respuesta de API de disponibilidad...');
@@ -193,9 +193,9 @@ class WebMonitor {
 
             staff.availabilityItems.forEach((item) => {
                 if (unavailableStatuses[item.status] === undefined) {
-                    const differenceInHours = DateUtils.differenceInHours(item.startDateTime.dateTime, item.endDateTime.dateTime);
-                    // Segun observaciones, solo considerar slots de 1 hora o más
-                    if (differenceInHours >= 1) {
+                    const differenceInMinutes = DateUtils.differenceInMinutes(item.startDateTime.dateTime, item.endDateTime.dateTime);
+                    // Segun observaciones, solo considerar slots de 20 minutos o más
+                    if (differenceInMinutes >= 20) {
                         hasAvailability = true;
 
                         availableSlots.push({
