@@ -112,7 +112,7 @@ class WebMonitor {
                 { timeout: 6000 }
             );
 
-            await page.locator('input[aria-label="Cédula Primera vez (digital)"] + label').click();
+            await page.locator('input[aria-label="Cédula Primera vez"] + label').click();
             await this.browserManager.takeScreenshot("003_birth_certificate_service_click");
 
             this.logger.info('Esperando respuesta de API de disponibilidad...');
